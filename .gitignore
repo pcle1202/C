@@ -1,0 +1,4 @@
+node_modules/
+sfx_raw/
+.DS_Store
+dist/

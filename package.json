@@ -1,0 +1,28 @@
+{
+  "name": "bdap-v2",
+  "version": "1.0.0",
+  "description": "bdap birthday cabin game",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "electron": "^45.3.0"
+  },
+  "build": {
+    "appId": "com.bdap.game",
+    "productName": "bdap",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "extendInfo": {
+        "NSCameraUsageDescription": "for blowing out the birthday candle",
+        "NSMicrophoneUsageDescription": "for blowing out the birthday candle"
+      }
+    }
+  }
+}
