@@ -35,7 +35,9 @@ function createWindow() {
     backgroundColor: '#000000',
     title: 'bdap',
   });
-  win.loadFile(path.join(__dirname, 'bdap.html'));
+  // real-date mode: nov 12 = birthday, after = "not your birthday anymore", before = "come back on november 12".
+  // For testing the birthday flow on any day, temporarily remove the query below (demo mode).
+  win.loadFile(path.join(__dirname, 'bdap.html'), { query: { realdate: '1' } });
 }
 
 app.whenReady().then(async () => {

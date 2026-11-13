@@ -1,43 +1,40 @@
-# QA checklist (run in the packaged app, Wi-Fi off)
+# QA checklist (run in the packaged v2 app, Wi-Fi off)
 
-Every item should match the design prototype exactly. If something differs, the cause is the Electron wrapper, not the game. Don't "fix" the game file.
+Every item should match the description. Game bugs are fixed in `tools/patch_v2.js` (or the design export), never in Electron code. Sound is only synthesized beeps; there are no audio files.
 
 ## Window
-- [ ] 480x480 content, can't be resized or maximized, black behind nothing, no scrollbars, no menu bar (Windows).
-- [ ] Fonts are pixel DotGothic16 (UI) and handwritten Indie Flower (letter), not a default system font. If they're wrong, fonts didn't load offline.
+- [ ] 480x480 content, can't be resized or maximized, no scrollbars, no menu bar (Windows).
+- [ ] Fonts are pixel DotGothic16 (UI) and handwritten Indie Flower (letter), not a system font.
 
 ## Intro
-- [ ] A cream terminal window types "> initializing..." etc. Click skips ahead, then click continues.
+- [ ] A terminal types "> initializing..." etc. at a calm pace (0.75x of the original). On nov 12 it ends with "today is your birthday!!". Click skips ahead, then click continues with a soft blip.
+- [ ] (Other dates) after nov 12: "it's not your birthday anymore... but you can still look around!!" and he can continue. Before nov 12: "come back on november 12 :)" and the game won't continue.
 
 ## Outside
 - [ ] Snow falls. Cyrus walks in from the left. Arrow keys walk.
-- [ ] Hovering the cabin shows a yellow outline (under cyrus). The tip "click the cabin to go inside" types, fades, then comes back.
-- [ ] Clicking the cabin: cyrus walks to the door, the screen fades, and he walks into the room from the left.
+- [ ] Hovering the cabin shows a yellow outline. The tip "click the cabin to go inside" types with a quiet tick, fades, then comes back.
+- [ ] Clicking the cabin: soft blip, cyrus walks to the door, fade, he walks into the room.
 
-## Room
-- [ ] The room is very dark with a flickering spotlight on the cake. The party lights blink. Only the cake is clickable. The tip "click the cake to start the party...." shows once.
-- [ ] Cat, cactus and window: hover outline, and a caption types at the bottom.
-
-## Cake
-- [ ] Zoom-in, then the frame opens like a TV. The webcam is mirrored, the hat sits on top, and "make a wish, then blow!" types slowly.
-- [ ] Blowing into the mic fills the bar, then smoke, confetti and a chime. "↺ relight" and "continue" appear.
-- [ ] After closing: the room is lit normally from now on, and 1 of 3 hearts is filled bottom-right.
+## Room and cake
+- [ ] The room is dark with a flickering spotlight on the cake. Only the cake is clickable. The tip "click the cake to start the party...." shows once.
+- [ ] Cake: zoom-in, the frame opens like a TV, webcam mirrored, small hat at the top. "shhh! be quiet..." then "make a wish, then blow into the mic!" type silently. The mic is ignored until the second line.
+- [ ] Blowing fills the bar, then smoke, confetti and a chime. No echo of your own voice from the speakers. "manual blow" also works.
+- [ ] After closing: the room is lit, 1 of 3 hearts, cyrus's heart bubble. The tip "use the left and right arrows to walk" shows first, then "view two more items to continue".
+- [ ] Cat, succulent and window: hover outline, a caption types at the bottom with a quiet tick. The cat's heart bubble sits a little up and to the right.
 
 ## Letter
-- [ ] The envelope pops up, "click to open", it opens, and the paper rises out.
-- [ ] Letters fall into a tall stack at the bottom with no overlaps, and the paper is scrollable (thin scrollbar).
-- [ ] Click: letters hop into place while the view follows the line being written. The full letter ends with "love, Prim".
-- [ ] "↺ scramble" works. After closing, 2 of 3 hearts are filled.
+- [ ] The envelope pops up, "click the envelope to open", it opens (soft blip), the paper slides out silently.
+- [ ] Letters fall into a stack (higher, quieter thuds), then unscramble silently. Clicking during the unscramble speeds it up. The letter ends with "love, Prim".
+- [ ] After it finishes, "scramble" with a replay icon sits left of "love, Prim"; clicking the letter scrambles it again. The text below reads "click outside to continue".
 
 ## Pinboard
-- [ ] Board pops up with 4 polaroids. Clicking a photo zooms it with its caption; clicking again puts it back. ✕ closes. Heart bubble from cyrus.
+- [ ] Board pops up with 4 polaroids and the title "fun / things / with / cyrus". Every click (open, photo, put back, close) is the same soft blip. Captions: "going into the mountain", "being a food critic", "sarasota beach", "the perry fair".
 
 ## Ending
-- [ ] At 3/3, the hearts pulse. Click: they merge into a big heart with a yellow outline. Click it: prim walks in from the right, both jump, hearts.
-- [ ] Prim follows cyrus. Clicking prim inside: both show hearts. Outside: prim shows an annoyed squiggle.
+- [ ] At 3/3 the hearts pulse. Click: they merge into a big heart. Click it: prim walks in from the right, "a prim has appeared!" types, then both jump with hearts. After she steps to cyrus's left, "hang out with prim or end the party" shows once.
+- [ ] Prim follows cyrus. Clicking prim inside: both show hearts. Outside: she shows a squiggle (top-right of her head). She also reacts on her own now and then, silently.
 - [ ] Going inside from outside: prim rushes to the door first.
-- [ ] The right arrow (bottom-right) opens "end the party?". "end it ♥" goes to the outro terminal, then click goes "back to the room".
+- [ ] The right arrow (bottom-right) opens "end the party?". "END!" makes both walk off to the right, then the outro terminal; click goes back to the room.
 
 ## Not bugs (intended)
 - Progress isn't saved: closing the app restarts from the intro.
-- The pinboard photos are pastel placeholders until real photos are added in the design project.

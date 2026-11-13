@@ -1,3 +1,5 @@
+> **Historical.** These prompts built the first Electron wrapper (v1). v2 no longer copies handoff files by hand: replace `handoff/bdap.raw.html` and run `node tools/patch_v2.js` (see `CLAUDE.md`).
+
 # Build prompts for Claude Code
 
 You want the app to be **exactly** like the prototype, so don't rebuild it. `app/bdap.html` IS the game: one self-contained offline file with all art, fonts and code inside, and the test bar and purple background already removed. Claude Code only has to wrap it in Electron.

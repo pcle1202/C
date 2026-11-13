@@ -191,7 +191,14 @@ Placeholders by Claude (user may redraw):
 
 ---
 
+## v2 app-side changes (2026-11-12)
+The shipped game is `src/bdap.html`, generated from this design export by `tools/patch_v2.js`. v2 deviates from the spec below in these ways (full detail in `../CLAUDE.md`): smaller party hat; prim hover/squiggle outside; letter replay; "a prim has appeared!" beat before her jump; cyrus and prim walk off to the right on END; prim reacts on her own (silent); shorter cake tip; new copy (envelope hint, "to continue" tips, pinboard captions, pinboard title); arrow-key tip after the first blow; "hang out with prim or end the party" tip; muted camera preview (no mic echo); nudged heart bubbles; real-date mode; sound reduced to the game's own beeps (one soft blip for every click, no unscramble/blow/envelope sounds, quieter and lower typewriter tick, terminal typing at 0.75x speed).
+
 ## Changelog (newest first)
+
+### 2026-11-12 (v2, app side)
+- Asked: split v1/v2 into separate folders; many copy, timing, sound and bubble tweaks; finalize.
+- Done: see "v2 app-side changes" above and `../CLAUDE.md`. Open guesses: wording of the arrow-key tip; the soft blip chosen for all clicks.
 
 ### 2026-11-11
 - Mic is ignored until "make a wish, then blow into the mic!" starts typing (WISH_AT = ~8s after the cake popup opens). Before that, sound can't fill the progress bar or blow the candle. Manual blow button unchanged.
