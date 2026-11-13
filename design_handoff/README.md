@@ -4,7 +4,7 @@
 A tiny cozy pixel-art game, made as a birthday gift for cyrus (nov 12). It runs in a fixed **480x480, non-resizable Electron window**. Flow: terminal intro → snowy cabin → candle-lit room → three quest items (webcam/mic cake, falling-letter letter, photo pinboard) → hearts merge → prim walks in → free roam → "end the party?" → outro.
 
 ## The goal: identical to the prototype
-**The design export is the finished game** (`app/bdap.html` here is the older 2026-11-11 copy; the current raw export is `../handoff/bdap.raw.html`). It's one self-contained file (1.4MB) with every sprite, both fonts (DotGothic16, Indie Flower), React and all game logic inlined, so it works offline. The testing scaffolding (purple page and jump bar) is already removed: it's just the 480x480 game.
+**The design export is the finished game** (the current raw export is `../handoff/bdap.raw.html`). It's one self-contained file (1.4MB) with every sprite, both fonts (DotGothic16, Indie Flower), React and all game logic inlined, so it works offline. The testing scaffolding (purple page and jump bar) is already removed: it's just the 480x480 game.
 
 **Do not rebuild, port, refactor or restyle it by hand.** In v2, all changes are applied by `../tools/patch_v2.js`, which turns the raw export into `../src/bdap.html`. See `../CLAUDE.md` for the rules and the list of v2 changes, then run through `QA_CHECKLIST.md`.
 
@@ -14,7 +14,6 @@ High-fidelity and final. Everything visible is intended, except the items under 
 ## Files
 - `../src/bdap.html`: **the game that ships** (generated; never edit).
 - `../handoff/bdap.raw.html`: the raw design export (input to the patch script).
-- `app/bdap.html`: older 2026-11-11 export, reference only.
 - `PROMPTS.md`: historical prompts that built the first Electron wrapper.
 - `QA_CHECKLIST.md`: what to test in the packaged app.
 - `../CLAUDE.md`: the rules and the v2 change list.

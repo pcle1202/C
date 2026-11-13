@@ -198,7 +198,7 @@ The shipped game is `src/bdap.html`, generated from this design export by `tools
 
 ### 2026-11-12 (v2, app side)
 - Asked: split v1/v2 into separate folders; many copy, timing, sound and bubble tweaks; finalize.
-- Done: see "v2 app-side changes" above and `../CLAUDE.md`. Open guesses: wording of the arrow-key tip; the soft blip chosen for all clicks.
+- Done: see "v2 app-side changes" above and `../CLAUDE.md` (latest: no auto-close of the pinboard, cake tip without dots, silent cat, one-time typewriter for "click the hearts!"). Open guesses: wording of the arrow-key tip; the soft blip chosen for all clicks.
 
 ### 2026-11-11
 - Mic is ignored until "make a wish, then blow into the mic!" starts typing (WISH_AT = ~8s after the cake popup opens). Before that, sound can't fill the progress bar or blow the candle. Manual blow button unchanged.

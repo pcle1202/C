@@ -19,7 +19,7 @@ Birthday gift game for cyrus (nov 12). Electron app, 480x480 locked window. `des
 - `src/bdap.html`: generated game (do not edit).
 - `tools/patch_v2.js`: all v2 changes (patch ids below).
 - `handoff/bdap.raw.html`: raw design export (patch input).
-- `design_handoff/`: the original handoff docs (`README.md`, `NOTES.md` spec + changelog, `PROMPTS.md`, `QA_CHECKLIST.md`) and the older 2026-11-11 export (reference only).
+- `design_handoff/`: the original handoff docs (`README.md`, `NOTES.md` spec + changelog, `PROMPTS.md`, `QA_CHECKLIST.md`).
 - `reference/`: editable design source (`bdap Game.dc.html`, with the test bar), read-only.
 - Test bar / purple page exist only in `reference/`; the app is just the 480x480 game square.
 
@@ -43,8 +43,13 @@ Birthday gift game for cyrus (nov 12). Electron app, 480x480 locked window. `des
 11. **Heart bubbles nudged** (`E12`): every heart/squiggle bubble is +8px right and +6px lower than the export; the cat bubble is +8px right and 2px higher (top 100px).
 12. **Real-date mode** (`src/main.js`): loads `bdap.html?realdate=1`. nov 12 = birthday; after = "it's not your birthday anymore... but you can still look around!!"; before = "come back on november 12 :)" and the game won't continue. To test the birthday flow on another day, temporarily remove the `query` option (demo mode always shows the birthday).
 13. **"hang out with prim or end the party" tip** (`E15`): typewriter quest tip shown ONCE (`endTipDone`) when prim reaches cyrus's left side.
+14. **Round-N tweaks** (`E16`): the cake tip is "click the cake to start the party" (no dots); the pinboard NEVER auto-closes after the 4th photo (the user leaves manually; the hint "click outside to continue" shows; `done.board` is set by the manual close); petting the cat is silent (the caption tick and heart bubble stay); the "click the hearts!" tip types with its tick only ONCE (`heartsTyped`), afterwards it just appears and fades.
+
+15. **END! hearts** (`E17`): clicking "END!" in the end dialog lets out heart bubbles from cyrus and prim (silent) as they start walking off.
+
+16. **Silent prim + silent exit** (`E18`): clicking prim makes NO sound at all (inside or outside); leaving the house through the left arrow has no click sound.
 
 Not v2 changes (part of the design handoff, they stay): the cake tip "shhh! be quiet." then "make a wish, then blow into the mic!", and the mic being ignored until the second line. The user asked to drop MY earlier extra "shh... be quiet!" caption; do not re-add it.
 
 ## Copy convention (observed)
-All lowercase; no periods; plain instructions have no end punctuation ("click the cabin to go inside", "view two more items to continue", "hang out with prim or end the party"); excitement = "!" ("click the hearts!", "a prim has appeared!"); trailing or narrative thoughts = "..." ("the succulent he got with prim...", "shhh! be quiet..."); the terminal uses "> " prefixes and "!!" / "...". (The original "click the cake to start the party...." has four dots, from the design.)
+All lowercase; no periods; plain instructions have no end punctuation ("click the cabin to go inside", "view two more items to continue", "hang out with prim or end the party"); excitement = "!" ("click the hearts!", "a prim has appeared!"); trailing or narrative thoughts = "..." ("the succulent he got with prim...", "shhh! be quiet..."); the terminal uses "> " prefixes and "!!" / "...".

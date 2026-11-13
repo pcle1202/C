@@ -270,6 +270,26 @@ rep('E15 tip done', "    if (st.questT && st.questT.startsWith('click the cake')
   "    if (st.questT && st.questT.startsWith('hang out with prim') && st.questAt && upd.now - st.questAt > st.questT.length * 45 + this.QHOLD + this.QFADE) upd.endTipDone = true;\n    if (st.questT && st.questT.startsWith('click the cake')");
 rep('E15 reset', 'cakeTipDone: false, arrowTipDone: false,', 'cakeTipDone: false, arrowTipDone: false, endTipDone: false,');
 
+// E16. (a) cake tip without the trailing dots; (b) NO auto-close of the pinboard after the 4th photo: the user leaves manually
+//      (hint "click outside to continue" already shows; done.board is set by the manual close);
+//      (c) cat pet is silent (the caption tick and heart bubble stay); (d) the "click the hearts!" tip types (with its tick) only ONCE,
+//      afterwards it just appears and fades.
+rep('E16 cake tip text', "'click the cake to start the party....'", "'click the cake to start the party'");
+rep('E16 no pinboard auto-close', "if (Object.keys(this.state.viewed).length >= 4 && !this.state.done.board) { clearTimeout(this.bct); this.bct = setTimeout(() => { if (this.state.popup === 'board' && this.state.zoom == null) this.close(); }, 700); }", "");
+rep('E16 silent cat', "petCat: () => this.walkThen(300, 422, () => { this.sfx(880, .08, 'triangle', .04, 1.3); setTimeout(() => this.sfx(1175, .1, 'triangle', .035), 90); this.setState({ catHeartAt", "petCat: () => this.walkThen(300, 422, () => { this.setState({ catHeartAt");
+rep('E16 hearts typed flag', "    if (st.questT && st.questT.startsWith('click the cake')",
+  "    if (st.questT === 'click the hearts!' && st.questAt && upd.now - st.questAt > st.questT.length * 45 + 100) upd.heartsTyped = true;\n    if (st.questT && st.questT.startsWith('click the cake')");
+rep('E16 hearts reset', 'arrowTipDone: false, endTipDone: false,', 'arrowTipDone: false, endTipDone: false, heartsTyped: false,');
+rep('E16 hearts no retype', "const first = el < per;", "const first = el < per && !(t === 'click the hearts!' && st.heartsTyped);");
+
+// E17. clicking "END!" lets out heart bubbles from cyrus AND prim (same coupleHeartAt bubbles as clicking prim; silent) as they walk off.
+rep('E17 end hearts', "this.pop(); this.goalFn = null; this.setState({ confirmEnd: false, goal: null, enterWalk: false, exitWalk: false, endWalk: true });", "this.pop(); this.goalFn = null; this.setState({ confirmEnd: false, goal: null, enterWalk: false, exitWalk: false, endWalk: true, coupleHeartAt: performance.now() });");
+
+// E18. clicking prim makes NO sound at all (inside heart blips, outside squiggle blips); leaving the house (left arrow) is silent too.
+rep('E18 silent prim inside', "((fn) => fn())(() => { this.sfx(880, .08, 'triangle', .04, 1.3); setTimeout(() => this.sfx(1175, .1, 'triangle', .035), 90); this.setState({ coupleHeartAt: 0 });", "((fn) => fn())(() => { this.setState({ coupleHeartAt: 0 });");
+rep('E18 silent prim outside', "clickPrimOut: () => { if (st.walkAt) return; this.sfx(330, .09, 'square', .03, .7); setTimeout(() => this.sfx(277, .12, 'square', .03, .8), 110); this.setState({ annoyAt: 0 });", "clickPrimOut: () => { if (st.walkAt) return; this.setState({ annoyAt: 0 });");
+rep('E18 silent go outside', "this.goalFn = null; this.pop(); this.setState({ goal: null, enterWalk: false, exitWalk: true });", "this.goalFn = null; this.setState({ goal: null, enterWalk: false, exitWalk: true });");
+
 const ser = JSON.stringify(t).replace(/<\//g, '<\\u002F');
 const out = html.replace(re, (_, a, _b, c) => a + lead + ser + trail + c);
 fs.writeFileSync(OUT, out);
